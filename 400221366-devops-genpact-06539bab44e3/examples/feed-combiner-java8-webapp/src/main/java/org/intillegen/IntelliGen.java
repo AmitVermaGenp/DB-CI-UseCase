@@ -30,39 +30,32 @@ public class IntelliGen extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		PrintWriter out = response.getWriter();
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		try{  
-			//Class.forName("com.mysql.jdbc.Driver");  
-			//Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://13.127.170.204:3306/dummy","dmatuser","dmatuser");  
-			//here sonoo is database name, root is username and password  
-			//Statement stmt=(Statement) con.createStatement();  
 			
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			String dbURL = "jdbc:sqlserver://52.66.126.95:1433;databaseName=Intelligen;";
+			String dbURL = "jdbc:sqlserver://13.126.21.36:1433;databaseName=Intelligen;";
 			Connection conn =  (Connection) DriverManager.getConnection(dbURL,"intelligenuser", "password" );
 			if (conn != null) {
 			    System.out.println("Connected");
 			}
 			
 			Statement stmt= conn.createStatement();
+			//String query= "insert into user_info( name , email, message) values(  '"+name+"' , '"+email+"' , '"+message+"')";
 			String name= request.getParameter("name");
 			String email= request.getParameter("email");
 			String message = request.getParameter("message");
 			
-/*			ResultSet rs=stmt.executeQuery("select * from emp");  
-			while(rs.next())  
-			System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)); */ 
 			
-			String query= "insert into user_info( name , email, message) values(  '"+name+"' , '"+email+"' , '"+message+"')";
+			
+			String query= "ALTER TABLE user_info ADD phone_number varchar(11)";
+			
 			int i= stmt.executeUpdate(query);
-			if(i>1){
-				out.println("done plz check");
-			}
-			System.err.println("no ");
 			conn.close();  
+			response.sendRedirect("success.html");
+			
 			}catch(Exception e){ System.out.println(e);}  
 		
 	}

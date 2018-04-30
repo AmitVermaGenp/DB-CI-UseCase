@@ -8,7 +8,7 @@
 	    <td class="text-blue-01-red"> 
 	    <%= ((String)request.getSession().getAttribute("errorMsg")!= null && 
                 !("".equalsIgnoreCase((String)request.getSession().getAttribute("errorMsg"))) && 
-                !("null".equalsIgnoreCase((String)request.getSession().getAttribute("errorMsg"))))?" Error: New Privileges cannot be saved. "+(String)request.getSession().getAttribute("errorMsg"):"" 
+                !("null".equalsIgnoreCase((String)request.getSession().getAttribute("errorMsg"))))?" Error:New Privileges cannot be saved. "+(String)request.getSession().getAttribute("errorMsg"):"" 
                 %> 
         </td>
 	  </tr>

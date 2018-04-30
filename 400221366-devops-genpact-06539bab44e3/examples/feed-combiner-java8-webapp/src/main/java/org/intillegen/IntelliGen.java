@@ -47,7 +47,8 @@ public class IntelliGen extends HttpServlet {
 			String name= request.getParameter("name");
 			String email= request.getParameter("email");
 			String message = request.getParameter("message");
-			String query= "insert into user_info( name , email, message) values(  '"+name+"' , '"+email+"' , '"+message+"')";
+			String phone_number = request.getParameter("phone_number");
+			String query= "insert into user_info( name , email, message, phone_number) values(  '"+name+"' , '"+email+"' , '"+message+"','"+phone_number+"')";
 			
 			
 			//String query= "ALTER TABLE user_info ADD phone_number varchar(11)";

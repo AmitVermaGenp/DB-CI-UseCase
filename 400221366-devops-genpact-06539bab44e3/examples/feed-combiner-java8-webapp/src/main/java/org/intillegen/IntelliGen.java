@@ -36,7 +36,7 @@ public class IntelliGen extends HttpServlet {
 		try{  
 			
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			String dbURL = "jdbc:sqlserver://13.232.1.101:1433;databaseName=Intelligen;";
+			String dbURL = "jdbc:sqlserver://13.126.89.195:1433;databaseName=Intelligen;";
 			Connection conn =  (Connection) DriverManager.getConnection(dbURL,"intelligenuser", "password" );
 			if (conn != null) {
 			    System.out.println("Connected");
@@ -47,8 +47,9 @@ public class IntelliGen extends HttpServlet {
 			String name= request.getParameter("name");
 			String email= request.getParameter("email");
 			String message = request.getParameter("message");
-			String phone_number = request.getParameter("phone_number");
-			String query= "insert into user_info( name , email, message, phone_number) values(  '"+name+"' , '"+email+"' , '"+message+"','"+phone_number+"')";
+			//String phone_number = request.getParameter("phone_number");
+			//String query= "insert into user_info( name , email, message, phone_number) values(  '"+name+"' , '"+email+"' , '"+message+"','"+phone_number+"')";
+			String query= "insert into user_info( name , email, message) values(  '"+name+"' , '"+email+"' , '"+message+"')";
 			
 			
 			//String query= "ALTER TABLE user_info ADD phone_number varchar(11)";

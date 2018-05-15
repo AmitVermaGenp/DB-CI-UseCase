@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,27 +37,29 @@ public class IntelliGen extends HttpServlet {
 		try{  
 			
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			String dbURL = "jdbc:sqlserver://52.66.184.61:1433;databaseName=Intelligen;";
+			String dbURL = "jdbc:sqlserver://13.127.146.185:1433;databaseName=Intelligen;";
 			Connection conn =  (Connection) DriverManager.getConnection(dbURL,"intelligenuser", "password" );
 			if (conn != null) {
 			    System.out.println("Connected");
 			}
 			
 			Statement stmt= conn.createStatement();
-			//String query= "insert into user_info( name , email, message) values(  '"+name+"' , '"+email+"' , '"+message+"')";
 			String name= request.getParameter("name");
 			String email= request.getParameter("email");
 			String message = request.getParameter("message");
-			String phone_number = request.getParameter("phone_number");
-			String query= "insert into user_info( name , email, message, phone_number) values(  '"+name+"' , '"+email+"' , '"+message+"','"+phone_number+"')";
-			//String query= "insert into user_info( name , email, message) values(  '"+name+"' , '"+email+"' , '"+message+"')";
 			
 			
+			String query= "insert into user_info( name , email, message, phone_number) values(  '"+name+"' , '"+email+"' , '"+message+"' , '12345678')";
 			//String query= "ALTER TABLE user_info ADD phone_number varchar(11)";
-			
 			int i= stmt.executeUpdate(query);
+			if(i>1){
+				out.println("done plz check");
+			}
+			System.err.println("no");
 			conn.close();  
-			response.sendRedirect("success.html");
+			RequestDispatcher rd = request.getRequestDispatcher("DataServlet");
+			rd.forward(request, response);
+			
 			
 			}catch(Exception e){ System.out.println(e);}  
 		

@@ -40,30 +40,36 @@
     holder.
 
 -->
-
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-    <servlet>
-        <servlet-name>org.glassfish.jersey.examples.feedcombiner.MyApplication</servlet-name>
-        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
-        <init-param>
-            <param-name>javax.ws.rs.Application</param-name>
-            <param-value>org.glassfish.jersey.examples.feedcombiner.MyApplication</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>org.glassfish.jersey.examples.feedcombiner.MyApplication</servlet-name>
-        <url-pattern>/combiner/*</url-pattern>
-    </servlet-mapping>
-    
-    
-    <servlet>
-        <servlet-name>IntelliGen</servlet-name>
-        <servlet-class>org.intillegen.IntelliGen</servlet-class>
-        
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>IntelliGen</servlet-name>
-        <url-pattern>/IntelliGen</url-pattern>
-    </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <servlet>
+    <servlet-name>org.glassfish.jersey.examples.feedcombiner.MyApplication</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>javax.ws.rs.Application</param-name>
+      <param-value>org.glassfish.jersey.examples.feedcombiner.MyApplication</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>org.glassfish.jersey.examples.feedcombiner.MyApplication</servlet-name>
+    <url-pattern>/combiner/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>IntelliGen</servlet-name>
+    <servlet-class>org.intillegen.IntelliGen</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IntelliGen</servlet-name>
+    <url-pattern>/IntelliGen</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DataServlet</display-name>
+    <servlet-name>DataServlet</servlet-name>
+    <servlet-class>org.intillegen.DataServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DataServlet</servlet-name>
+    <url-pattern>/DataServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

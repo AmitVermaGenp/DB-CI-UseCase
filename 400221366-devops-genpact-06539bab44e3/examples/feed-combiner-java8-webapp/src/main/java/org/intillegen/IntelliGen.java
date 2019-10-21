@@ -37,7 +37,7 @@ public class IntelliGen extends HttpServlet {
 		try{  
 			
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			String dbURL = "jdbc:sqlserver://13.234.77.226:1433;databaseName=Intelligen_Dev;";
+			String dbURL = "jdbc:sqlserver://52.66.209.88:1433;databaseName=Intelligen_Dev;";
 			Connection conn =  (Connection) DriverManager.getConnection(dbURL,"intelligenuser", "password" );
 			if (conn != null) {
 			    System.out.println("Connected");
